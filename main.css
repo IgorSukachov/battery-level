@@ -1,0 +1,69 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 60vh;
+}
+
+#battery {
+    position: relative;
+    width: 500px;
+    height: 120px;
+    padding: 10px;
+    border: 1px solid grey;
+    border-radius: 6px;
+}
+
+#battery::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 50px;
+    right: -18px;
+    top: 46px;
+    border: 1px solid grey;
+    border-radius: 0 6px 6px 0;
+    border-left-color: white;
+}
+
+#battery-level {
+    height: 100%;
+    width: 30%;
+    background: linear-gradient(to bottom, #66FF00 0%, #57F000 100%); /* По направлению вниз от первого цвета ко второму*/
+    transition: linear 1s;
+}
+
+#battery-level-percent {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    text-align: center;
+    font-size: 120px;
+}
+
+#status {
+    font-size: 30px;
+}
+
+#discharging-time {
+    font-size: 24px;
+    font-style: italic;
+    font-weight: bold;
+}
+
+#battery-level.battery-active {
+    animation-name: battery-charging;
+    animation-duration: 2.5s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes battery-charging {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}
